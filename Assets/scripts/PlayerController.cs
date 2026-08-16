@@ -13,6 +13,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float groundCheckRadius = 0.2f;
     [SerializeField] private LayerMask groundLayer;
 
+    [Header("jump tuning")]
+    [SerializeField] private float fallMultiplier = 2.5f;
+    [SerializeField] private float lowJumpMultiplier = 1f;
+
+
     private PlayerControls playerControls;
     private Vector2 movement;
     private Rigidbody2D rb;
@@ -41,11 +46,15 @@ public class PlayerController : MonoBehaviour
         PlayerInput();
 
         CheckIsgrounded();
+
+        HandleJumpVariable();
     }
 
     private void FixedUpdate()
     {
         Move();
+
+        HandleBetterFall();
     }
 
     private void PlayerInput()
@@ -72,6 +81,25 @@ public class PlayerController : MonoBehaviour
         if (IsGrounded)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+        }
+    }
+
+    private void HandleBetterFall() 
+    {
+        if (rb.linearVelocity.y < 0)
+        {
+            rb.linearVelocity += Vector2.up * Physics2D.gravity.y * fallMultiplier * Time.fixedDeltaTime;
+        }
+    }
+
+    private void HandleJumpVariable()
+    {
+        bool ReleasedJumpEarly = rb.linearVelocity.y > 0 && !playerControls.Movement.jump.IsPressed();
+
+        if (ReleasedJumpEarly == true) 
+        {
+            rb.linearVelocity += Vector2.up * Physics2D.gravity.y * lowJumpMultiplier * Time.deltaTime;
+           
         }
     }
 }
