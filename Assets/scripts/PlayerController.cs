@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     [Header("jump tuning")]
     [SerializeField] private float fallMultiplier = 2.5f;
     [SerializeField] private float lowJumpMultiplier = 1f;
+    [SerializeField] private const int MaxJumps = 2;
+    [SerializeField] private int JumpsLeft = MaxJumps;
 
 
     private PlayerControls playerControls;
@@ -78,28 +80,40 @@ public class PlayerController : MonoBehaviour
     private void OnJump(InputAction.CallbackContext context) 
     {
         //saves the linear velocity x from walking and adds jumpForce to the linear velocity y
-        if (IsGrounded)
+        if (IsGrounded == true)
+        {
+            JumpsLeft = MaxJumps;   
+        }
+
+        if (JumpsLeft > 0 && playerControls.Movement.jump.IsPressed()) 
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            JumpsLeft--;
         }
     }
 
     private void HandleBetterFall() 
     {
+        //if rb y speed is less than zero(aka falling)
         if (rb.linearVelocity.y < 0)
         {
+            //add fallmultiplier to player velocity every fixed frame
             rb.linearVelocity += Vector2.up * Physics2D.gravity.y * fallMultiplier * Time.fixedDeltaTime;
         }
     }
 
     private void HandleJumpVariable()
     {
+        //rb is more than zero(accending) AND jump button is not pressed
         bool ReleasedJumpEarly = rb.linearVelocity.y > 0 && !playerControls.Movement.jump.IsPressed();
 
         if (ReleasedJumpEarly == true) 
         {
+            //add lowjumpmultiplier to player velocity every fixed frame
             rb.linearVelocity += Vector2.up * Physics2D.gravity.y * lowJumpMultiplier * Time.deltaTime;
            
         }
     }
+
+
 }
