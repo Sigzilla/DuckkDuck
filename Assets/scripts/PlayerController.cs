@@ -24,11 +24,15 @@ public class PlayerController : MonoBehaviour
     private Vector2 movement;
     private Rigidbody2D rb;
     private bool IsGrounded;
+    private Animator playerAnimator;
+    private SpriteRenderer spriteRenderer;
 
     private void Awake()
     {
         playerControls = new PlayerControls();
         rb = GetComponent<Rigidbody2D>();
+        playerAnimator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         playerControls.Movement.jump.performed += OnJump;
     }
@@ -50,6 +54,10 @@ public class PlayerController : MonoBehaviour
         CheckIsgrounded();
 
         HandleJumpVariable();
+
+        UpdateAnimations();
+
+        FlipSprite();
     }
 
     private void FixedUpdate()
@@ -115,5 +123,28 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void UpdateAnimations() 
+    {
+        //sets the moveX float from the animator to the players horizontal movement
+        playerAnimator.SetFloat("MoveX", movement.x);
+
+        //sets the bool from the animator to true or false depending on the isGrounded from the script
+        playerAnimator.SetBool("IsGrounded", IsGrounded);
+    
+    }
+
+    private void FlipSprite() 
+    {
+        //if players x velocity is less than zero(going left), DONT flip sprite
+        if (movement.x < 0) 
+        {
+            spriteRenderer.flipX = false;
+        }
+        //if players x velocity is more than zero(going right), flip sprite
+        else if (movement.x > 0)
+        {
+            spriteRenderer.flipX = true;
+        }
+    }
 
 }
