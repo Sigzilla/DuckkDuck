@@ -95,6 +95,12 @@ public class PlayerController : MonoBehaviour
 
         if (JumpsLeft > 0 && playerControls.Movement.jump.IsPressed()) 
         {
+            if (!IsGrounded) 
+            {
+                //plays the animation if the player double jumps
+                playerAnimator.SetTrigger("DoubleJump");
+            }
+
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             JumpsLeft--;
         }

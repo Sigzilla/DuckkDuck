@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 44cda025b3f12b94cb82ce92e6a02140
+guid: 406122780a6d4cd46bdce10ac1775751
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -36,7 +36,7 @@ ScriptedImporter:
     spriteMeshType: 1
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
-    spritePixelsToUnits: 32
+    spritePixelsToUnits: 24
     spriteBorder: {x: 0, y: 0, z: 0, w: 0}
     spriteGenerateFallbackPhysicsShape: 0
     generateCubemap: 6
@@ -102,7 +102,7 @@ ScriptedImporter:
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   importFileNodeState: 1
-  platformSettingsDirtyTick: 639230867534926492
+  platformSettingsDirtyTick: 639233674772364117
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -127,9 +127,9 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Jump.duck-Sheet
+  - name: walk.duck-Sheet
     originalName: 
-    pivot: {x: 0.5, y: -0.3888889}
+    pivot: {x: 0.49579835, y: -0.3}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -137,9 +137,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 54
-      height: 18
-    spriteID: 25b69ac7b07708f468118c3f3a7926c7
+      width: 119
+      height: 20
+    spriteID: a7bdddba1c9fc804fbc65fa962ecf319
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -147,9 +147,9 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: -1, y: -3}
+    uvTransform: {x: -1, y: -2}
   spriteSheetImportData:
-  - name: Jump.duck-Sheet_0
+  - name: walk.duck-Sheet_0
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -158,10 +158,10 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 4
+      y: 5
       width: 22
       height: 18
-    spriteID: f292264e6bc868a40a9d64b83cc5cf88
+    spriteID: 652f603e609700345a7035368c0a665e
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -170,7 +170,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: Jump.duck-Sheet_1
+  - name: walk.duck-Sheet_1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -179,10 +179,52 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 36
+      y: 5
+      width: 23
+      height: 19
+    spriteID: cc3a69001478c5c45b5f3dc28fb469d3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: walk.duck-Sheet_2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 68
       y: 4
-      width: 22
-      height: 18
-    spriteID: bce59bb6cae98f74785809c220b7facc
+      width: 23
+      height: 20
+    spriteID: 45385ee4ba7a5934a8d392fcb72af5b4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: walk.duck-Sheet_3
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 100
+      y: 5
+      width: 23
+      height: 19
+    spriteID: 3bd51f4405e35c145b3135b27f442b73
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -195,25 +237,25 @@ ScriptedImporter:
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 4002738483
+      value0: 2516031924
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: Jump.duck-Sheet
+    name: walk.duck-Sheet
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Jump.duck-Sheet
+    - name: walk.duck-Sheet
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
-        width: 64
+        width: 128
         height: 32
-      spriteId: 25b69ac7b07708f468118c3f3a7926c7
+      spriteId: a7bdddba1c9fc804fbc65fa962ecf319
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -247,5 +289,5 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 64, y: 32}
-  previousTextureSize: {x: 64, y: 32}
+  canvasSize: {x: 128, y: 32}
+  previousTextureSize: {x: 128, y: 32}
