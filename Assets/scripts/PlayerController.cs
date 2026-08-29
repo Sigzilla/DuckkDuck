@@ -77,12 +77,14 @@ public class PlayerController : MonoBehaviour
     {
         // if circle overlaps with a hitbox on ground layer, IsGrounded = true
         IsGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+     
     }
 
     private void Move()
     {
         //adds movement speed to the x axis and keeps the y axis the same
         rb.linearVelocity = new Vector2(movement.x * moveSpeed, rb.linearVelocity.y);
+        
     }
 
     private void OnJump(InputAction.CallbackContext context) 
